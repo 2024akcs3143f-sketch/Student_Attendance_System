@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage student registrations and attendance records.">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <p class="eyebrow">Attendance dashboard</p>
+        <h1>Student Attendance Management System</h1>
+      </div>
+      <span class="header-mark" aria-hidden="true">SA</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+    <section class="forms-grid" aria-label="Attendance management forms">
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Student records</p>
+            <h2>Register a student</h2>
+          </div>
+          <span class="step-number" aria-hidden="true">01</span>
+        </div>
+        <form id="student-form">
+          <label for="student-name">Student name</label>
+          <input id="student-name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="e.g. John Doe" required>
+
+          <label for="registration-number">Registration number</label>
+          <input id="registration-number" name="reg_number" type="text" maxlength="50" placeholder="e.g. 2024/BCS/001" required>
+
+          <button type="submit">Register student</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Daily records</p>
+            <h2>Record attendance</h2>
+          </div>
+          <span class="step-number" aria-hidden="true">02</span>
+        </div>
+        <form id="attendance-form">
+          <label for="attendance-student-id">Student ID</label>
+          <input id="attendance-student-id" name="student_id" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter the student's ID" required>
+
+          <label for="attendance-status">Attendance status</label>
+          <select id="attendance-status" name="status" required>
+            <option value="Present">Present</option>
+            <option value="Late">Late</option>
+            <option value="Absent">Absent</option>
+          </select>
+
+          <button type="submit">Record attendance</button>
+        </form>
+      </article>
+    </section>
+
+    <section class="panel table-panel" aria-labelledby="students-heading">
+      <div class="panel-heading table-heading">
+        <div>
+          <p class="eyebrow">Directory</p>
+          <h2 id="students-heading">Registered students</h2>
+        </div>
+        <button id="load-students" class="button-secondary" type="button">Get students</button>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Student ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Registration number</th>
+            </tr>
+          </thead>
+          <tbody id="students-table-body">
+            <tr><td class="empty-state" colspan="3">Select “Get students” to load student records.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel table-panel" aria-labelledby="attendance-heading">
+      <div class="panel-heading table-heading">
+        <div>
+          <p class="eyebrow">Daily log</p>
+          <h2 id="attendance-heading">Attendance records</h2>
+        </div>
+        <button id="load-attendance" class="button-secondary" type="button">Get attendance</button>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Record ID</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Recorded at</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-table-body">
+            <tr><td class="empty-state" colspan="4">Select “Get attendance” to load attendance records.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container page-footer">
+    <p>Student Attendance Management System</p>
+  </footer>
+</body>
+</html>
